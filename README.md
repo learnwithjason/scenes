@@ -30,6 +30,11 @@ This site includes
 
 - [Benjamin Lannon](https://twitter.com/lannonbr) wrote [a Toast starter](https://github.com/lannonbr/toast-digital-garden-starter) that includes automatic image upload to cloudinary via [jlengstorf's rehype plugin](https://github.com/jlengstorf/rehype-local-image-to-cloudinary)
 
+Existing Toast sites can be found in the wild at the following locations. Feel free to check out the network traffic to see what an ESM-first approach looks like in practice.
+
+- [Chris Biscardi's](https://www.christopherbiscardi.com/)
+- [Benjamin Lannon's](https://lannonbr.com/)
+
 ## Feedback
 
 Please file issues. Toast is still in early development (there is no documentation yet). There is no official plugins API, no baked-in data fetching (ex: like Gatsby has it's GraphQL layer). This repo works and will be kept updated with new features and bug fixes. If there's functionality you want to see, [file a feature request](https://github.com/ChristopherBiscardi/new-toast-site/issues/new)
