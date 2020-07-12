@@ -1,6 +1,6 @@
 # Toast Example Site
 
-This repo is an implementation of the experimental [Toast](https://github.com/christopherBiscardi/toast) package. It will be updated as Toast is updated with new features.
+This repo is an implementation of the experimental [Toast](https://github.com/christopherBiscardi/toast) package. It will be updated as Toast is updated with new features. [![](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ChristopherBiscardi/new-toast-site)
 
 ![Toast](./static/toast.jpg)
 
@@ -26,6 +26,8 @@ This site includes
 - static/ folder usage
 - src/pages for .js files
 - When selecting text on the page, a tweetable selection will pop up.
+- Styling is done with [emotion]() although this can be replaced with Tailwind or whatever you prefer
+- Preact
 
 ## More Examples
 
