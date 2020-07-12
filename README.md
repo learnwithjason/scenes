@@ -32,4 +32,4 @@ This site includes
 
 ## Feedback
 
-Please file issues. Toast is still in early development. There is no official plugins API, no baked-in data fetching (ex: like Gatsby has it's GraphQL layer). This repo works and will be kept updated with new features and bug fixes. If there's functionality you want to see, [file a feature request](https://github.com/ChristopherBiscardi/new-toast-site/issues/new)
+Please file issues. Toast is still in early development (there is no documentation yet). There is no official plugins API, no baked-in data fetching (ex: like Gatsby has it's GraphQL layer). This repo works and will be kept updated with new features and bug fixes. If there's functionality you want to see, [file a feature request](https://github.com/ChristopherBiscardi/new-toast-site/issues/new)
