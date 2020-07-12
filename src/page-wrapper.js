@@ -144,7 +144,7 @@ const Header = (props) => (
   >
     <div>
       <a href="/" css={{ display: "flex", flex: 1, marginTop: "7px" }}>
-        <img src="/toast.jpg" />
+        <img src="/toast.jpg" css={{ width: "50px" }} />
       </a>
     </div>
     <nav css={{ display: "flex", flex: 1 }}>
