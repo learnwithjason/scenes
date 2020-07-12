@@ -25,6 +25,7 @@ This site includes
 - babel-plugin-preval examples
 - static/ folder usage
 - src/pages for .js files
+- When selecting text on the page, a tweetable selection will pop up.
 
 ## More Examples
 
