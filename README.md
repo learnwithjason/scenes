@@ -2,7 +2,7 @@
 
 This repo is an implementation of the experimental [Toast](https://github.com/christopherBiscardi/toast) package. It will be updated as Toast is updated with new features.
 
-![Toast](./src/static/toast.jpg)
+![Toast](./static/toast.jpg)
 
 ## Try it out:
 
