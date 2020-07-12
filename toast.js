@@ -23,7 +23,7 @@ exports.prepData = async ({ cacheDir, publicDir }) => {
     updatedAt: date,
     slug,
     tags,
-    contentType: "post",
+    contentType: "blog-post",
   }));
 
   await fs.writeFile(
