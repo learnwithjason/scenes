@@ -3,7 +3,6 @@ const path = require("path");
 const MDXPostsSource = require("./fetch-mdx-post-files");
 
 exports.sourceData = async ({ withCache, createPage }) => {
-  console.log("sourceData");
   return Promise.all([
     withCache("mdx-posts", MDXPostsSource.sourceData({ createPage })),
   ]);
