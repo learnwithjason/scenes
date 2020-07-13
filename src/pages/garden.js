@@ -127,49 +127,50 @@ export default (props) => {
           marginTop: "2rem",
         }}
       >
-        {props.posts
-          .map((v) => v.tags)
-          .filter((v) => !!v)
-          .flat(Infinity)
-          .map((value) => (
-            <li>
-              <button
-                css={{
-                  padding: "10px 16px",
-                  backgroundColor: filterState.tags.includes(value)
-                    ? "#3981fe"
-                    : "#10151e",
-                  color: filterState.tags.includes(value)
-                    ? "#eef1f7"
-                    : "#3981fe",
-                  border: "none",
-                  fontWeight: "600",
-                  fontSize: "15px",
-                  borderRadius: "10px",
-                  border: "1px solid transparent",
-                  boxShadow: `inset 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+        {Array.from(
+          new Set(
+            props.posts
+              .map((v) => v.tags)
+              .filter((v) => !!v)
+              .flat(Infinity)
+          )
+        ).map((value) => (
+          <li>
+            <button
+              css={{
+                padding: "10px 16px",
+                backgroundColor: filterState.tags.includes(value)
+                  ? "#3981fe"
+                  : "#10151e",
+                color: filterState.tags.includes(value) ? "#eef1f7" : "#3981fe",
+                border: "none",
+                fontWeight: "600",
+                fontSize: "15px",
+                borderRadius: "10px",
+                border: "1px solid transparent",
+                boxShadow: `inset 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
                 inset 0 6.7px 5.3px rgba(0, 0, 0, 0.028),
                 inset 0 12.5px 10px rgba(0, 0, 0, 0.035),
                 inset 0 22.3px 17.9px rgba(0, 0, 0, 0.042),
                 inset 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
                 inset 0 100px 80px rgba(0, 0, 0, 0.07)`,
-                  "&:focus": {
-                    borderColor: "#3981fe",
-                    outline: "none",
-                  },
-                }}
-                onClick={() => {
-                  if (filterState.tags.includes(value)) {
-                    filterDispatch({ type: "removeTag", payload: value });
-                  } else {
-                    filterDispatch({ type: "addTag", payload: value });
-                  }
-                }}
-              >
-                {value}
-              </button>
-            </li>
-          ))}
+                "&:focus": {
+                  borderColor: "#3981fe",
+                  outline: "none",
+                },
+              }}
+              onClick={() => {
+                if (filterState.tags.includes(value)) {
+                  filterDispatch({ type: "removeTag", payload: value });
+                } else {
+                  filterDispatch({ type: "addTag", payload: value });
+                }
+              }}
+            >
+              {value}
+            </button>
+          </li>
+        ))}
       </ul>
       <div css={{ gridColumn: "2/4" }}>
         <input
