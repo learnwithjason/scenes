@@ -1,6 +1,8 @@
 # Toast Example Site
 
-This repo is an implementation of the experimental [Toast](https://github.com/christopherBiscardi/toast) package. It will be updated as Toast is updated with new features. [![](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ChristopherBiscardi/new-toast-site)
+[![](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ChristopherBiscardi/new-toast-site)
+
+This repo is an implementation of the experimental [Toast](https://github.com/christopherBiscardi/toast) package. It will be updated as Toast is updated with new features. 
 
 ![Toast](./static/toast.jpg)
 
