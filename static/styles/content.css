@@ -1,0 +1,91 @@
+.content {
+  background-position: center;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+}
+
+.videos {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.videos.solo {
+  grid-template-rows: 1fr;
+}
+
+.guest,
+.host {
+  position: relative;
+}
+
+.host h2,
+.guest h2 {
+  bottom: 0;
+  color: var(--text);
+  font-size: 22px;
+  font-weight: 600;
+  left: 0;
+  margin: 0;
+  padding: 0 20px;
+  position: absolute;
+  width: 100%;
+}
+
+.host span,
+.guest span {
+  background: var(--black);
+  display: inline-block;
+  padding: 0 3px;
+  position: relative;
+  z-index: 10;
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 6px transparent;
+}
+
+.host h2::after,
+.guest h2::after {
+  background: var(--black);
+  bottom: 0;
+  content: '';
+  height: 10px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.content.interview {
+  background-image: url('https://res.cloudinary.com/jlengstorf/image/upload/f_auto,q_auto/v1596392767/lwj/interview-overlay.webp');
+  grid-template-columns: 1fr 480px 80px 480px 1fr;
+  grid-template-rows: 56px 462px 1fr;
+}
+
+.content.monologue {
+  background-image: url('https://res.cloudinary.com/jlengstorf/image/upload/f_auto,q_auto/v1596392808/lwj/monologue-overlay.webp');
+  grid-template-columns: 1fr 600px 1fr;
+  grid-template-rows: 56px 462px 1fr;
+}
+
+.interview .host,
+.interview .guest,
+.monologue .host {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  height: 100%;
+  width: 100%;
+}
+
+.interview .guest {
+  grid-column: 4 / 5;
+}
+
+.interview h2,
+.monologue h2 {
+  font-size: 36px;
+}
+
+.interview h2::after,
+.monologue h2::after {
+  background: transparent;
+}

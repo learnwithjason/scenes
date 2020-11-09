@@ -1,0 +1,86 @@
+:root {
+  --pink: #d459ab;
+  --pink-text: #dd78bc; /* lightened up to meet a11y guidelines */
+  --yellow: #ffdf37;
+  --blue: #a6fffa;
+  --light-gray: #e0e0e0;
+  --dark-gray: #1a2a3b;
+  --black: #011627;
+  --black-transparent: #01162700;
+  --font-family: mallory, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
+  --lwj-gradient: linear-gradient(
+    90deg,
+    var(--pink) 0%,
+    var(--yellow) 25%,
+    var(--blue) 50%,
+    var(--yellow) 75%,
+    var(--pink) 100%
+  );
+  --text: white;
+  --text-muted: #bdbdbd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--black);
+  margin: 0;
+}
+
+.overlay {
+  display: grid;
+  font-family: var(--font-family);
+  grid-template-rows: 9px 1fr 10px 140px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.bottom-bar,
+.top-bar {
+  animation: gradient-roll 20s linear infinite alternate;
+  background-image: var(--lwj-gradient);
+  background-size: 200%;
+  border-bottom: 0.5px solid var(--light-gray);
+  position: relative;
+  width: 100vw;
+  z-index: 100;
+}
+
+@keyframes gradient-roll {
+  0% {
+    background-position: -100vw 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.top-bar::before,
+.top-bar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100vw;
+}
+
+.top-bar::before {
+  bottom: 2px;
+  height: 0.5px;
+  background-color: var(--light-gray);
+}
+
+.top-bar::after {
+  bottom: 0;
+  height: 2px;
+  background-color: var(--black);
+}
+
+.bottom-bar {
+  border-top: 0.5px solid var(--light-gray);
+  height: 10px;
+}

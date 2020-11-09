@@ -1,3 +1,32 @@
 [build]
   publish = "public"
   command = "npm run breadbox && npm run build"
+
+[dev]
+  framework = "#custom"
+  targetPort = 8080
+  command = "npm run dev"
+
+[[redirects]]
+  from = "/monologue"
+  to = "/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/interview"
+  to = "/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/pair-programming"
+  to = "/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/solo"
+  to = "/"
+  status = 200
+  force = true

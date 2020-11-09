@@ -1,0 +1,177 @@
+.lower-third {
+  width: 100vw;
+  height: 140px;
+  background: var(--black);
+  display: grid;
+  grid-template-columns: 280px 1fr 380px;
+  position: relative;
+  z-index: 100;
+}
+
+.logo {
+  height: 140px;
+  position: relative;
+  width: 280px;
+}
+
+.logo::after {
+  background-image: linear-gradient(
+      255deg,
+      var(--black) 0%,
+      var(--black-transparent) 70%
+    ),
+    radial-gradient(
+      ellipse 90% 100% at 15% 20%,
+      var(--black),
+      var(--black-transparent) 25%
+    ),
+    radial-gradient(
+      ellipse 50% 250% at 5% 80%,
+      var(--black),
+      var(--black-transparent) 25%
+    );
+  bottom: 0;
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.logo img {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  width: 108px;
+  z-index: 100;
+}
+
+.logo canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 140px;
+}
+
+.details {
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.details h1,
+.details p {
+  margin: 0;
+}
+
+.details h1 {
+  font-size: 1.5rem;
+}
+
+.details p {
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 0.1em;
+}
+
+.rotator {
+  height: 35px;
+  position: relative;
+}
+
+.schedule,
+.captions,
+.sponsors {
+  animation: rotate 45s linear infinite;
+  position: absolute;
+  top: 0;
+  align-items: center;
+  display: grid;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+}
+
+.captions {
+  animation-delay: 15s;
+}
+
+.sponsors {
+  animation-delay: 30s;
+}
+
+@keyframes rotate {
+  0% {
+    opacity: 0;
+  }
+
+  3% {
+    opacity: 0.75;
+  }
+
+  30% {
+    opacity: 0.75;
+  }
+
+  33% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.sponsors {
+  gap: 30px;
+  grid-template-columns: 120px 350px;
+}
+
+.sponsors span {
+  font-size: 12px;
+  font-weight: 200;
+  letter-spacing: 0.1em;
+  text-align: right;
+}
+
+.sponsors img {
+  display: block;
+  width: 100%;
+}
+
+.chat {
+  border: 10px solid var(--black);
+  border-left: 0;
+  border-right: 0;
+  color: var(--text);
+  overflow: hidden;
+  position: relative;
+}
+
+.chat-container {
+  bottom: 0;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0 20px 6px;
+  position: absolute;
+  width: 100%;
+}
+
+.chat-message {
+  font-size: 12px;
+}
+
+.chat-message img {
+  display: inline-block;
+  line-height: 1;
+  margin: -6px 0 -4px;
+  vertical-align: middle;
+  width: 24px;
+}

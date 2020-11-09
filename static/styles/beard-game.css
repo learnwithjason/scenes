@@ -1,0 +1,290 @@
+/*
+ * this was built on stream by @cassidoo. you can see how it all works in the
+ * episode: https://www.learnwithjason.dev/build-a-realtime-twitch-game
+ */
+.beard-game {
+  --black: #1d2528;
+  --light-purple: #7d96d1;
+  --purple: #3d4284;
+  --flesh: #ffb482;
+  --hair: #875443;
+
+  position: absolute;
+  left: 0;
+  bottom: 150px;
+  transform: scale(0.35);
+  transform-origin: bottom left;
+  width: 500px;
+  z-index: 20;
+}
+
+.beard-game.left {
+  left: 430px;
+}
+
+.foreground {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+.jason {
+  position: relative;
+  transform: rotate(15deg) translateY(500px);
+  transform-origin: bottom left;
+  transition: all 300ms cubic-bezier(0.8, -0.25, 0.2, 1.25);
+  opacity: 0;
+}
+
+.jason.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.jason .head {
+  position: relative;
+  width: 130px;
+  height: 180px;
+  background: var(--flesh);
+  margin-bottom: 10px;
+  margin-left: 25px;
+  border-radius: 30px;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+}
+
+.jason.head::before {
+  display: block;
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 110px;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  border-top-left-radius: 60px;
+  border-bottom-right-radius: 30px;
+  z-index: 10;
+}
+.jason .neck {
+  position: absolute;
+  bottom: -30px;
+  width: 96px;
+  height: 60px;
+  background: var(--flesh);
+}
+
+.jason .neck::before {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 30px;
+  right: 0;
+  width: 0px;
+  height: 0px;
+  border-left: 30px solid transparent;
+  border-right: 30px solid rgba(0, 0, 0, 0.3);
+  border-top: 4px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 4px solid transparent;
+}
+
+.jason .eye {
+  position: absolute;
+  top: 80px;
+  width: 10px;
+  height: 10px;
+  background: var(--black);
+  border-radius: 50%;
+}
+.jason .eye.left {
+  right: 10px;
+}
+.jason .eye.right {
+  right: 60px;
+}
+.jason .eye::before {
+  display: block;
+  content: '';
+  position: relative;
+  bottom: 22px;
+  right: 10px;
+  width: 30px;
+  height: 10px;
+  border-radius: 10px;
+  background: var(--hair);
+  transition: bottom 0.5s;
+}
+.jason .eye.right::before {
+  display: block;
+  content: '';
+  position: relative;
+  bottom: 12px;
+}
+.jason .eye::after {
+  display: block;
+  content: '';
+  position: relative;
+  left: -15px;
+  bottom: 20px;
+  width: 35px;
+  height: 20px;
+  background: transparent;
+  border: 5px solid var(--black);
+  border-radius: 5px;
+}
+.jason .ear {
+  position: relative;
+  top: 80px;
+  left: -20px;
+  width: 40px;
+  height: 40px;
+  background: var(--flesh);
+  border-radius: 50%;
+}
+.jason .mouth {
+  position: absolute;
+  right: 15px;
+  bottom: 30px;
+  width: 40px;
+  height: 5px;
+  background: var(--black);
+  border: 5px solid var(--flesh);
+  border-radius: 10px;
+  z-index: 1000;
+}
+.jason .beard {
+  position: absolute;
+  right: 0;
+  top: 100px;
+  width: 110px;
+  height: 80px;
+  background-image: linear-gradient(
+    to top,
+    violet,
+    indigo,
+    blue,
+    green,
+    yellow,
+    orange,
+    red,
+    violet,
+    var(--hair) 50%,
+    var(--hair) 100%
+  );
+  background-size: 100% 220%;
+  background-position: top center;
+  border-radius: 20px;
+  border-top-left-radius: 60px;
+  border-bottom-right-radius: 30px;
+  z-index: 100;
+  transition: all 1s;
+}
+.jason .beard.none {
+  opacity: 0.1;
+}
+.jason .beard.rainbow {
+  background-position: bottom center;
+}
+.jason .body {
+  position: relative;
+  width: 200px;
+  height: 300px;
+  background: var(--purple);
+  border-top-right-radius: 90px;
+  border-top-left-radius: 30px;
+}
+.jason .body::after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: -20px;
+  width: 100px;
+  height: 300px;
+  background: var(--light-purple);
+  border-top-right-radius: 84px;
+  border-top-left-radius: 70px;
+  border-bottom-right-radius: 200px;
+  border-bottom-left-radius: 20px;
+  transform-origin: 0 0;
+}
+
+.jason.flap .eye::before,
+.jason.flap .eye.right::before,
+.beard-game:hover .eye::before,
+.beard-game:hover .eye.right::before {
+  bottom: 25px;
+}
+.jason.flap .body::after,
+.beard-game:hover .body::after {
+  animation: 0.5s flap infinite;
+}
+
+@keyframes flap {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+.notification {
+  animation: float 2s linear;
+  animation-delay: 300ms;
+  bottom: 100%;
+  color: #fff;
+  font-family: mallory;
+  font-weight: 800;
+  font-size: 60px;
+  left: -70px;
+  letter-spacing: -0.05em;
+  right: 0;
+  opacity: 0;
+  position: absolute;
+  text-align: center;
+  text-transform: uppercase;
+  transform: scale(1) rotate(var(--angle-end)) translate3d(0, -100px, 0);
+  transform-origin: bottom center;
+  width: 300px;
+  z-index: 9000;
+  -webkit-text-stroke: 4px black;
+}
+
+.char {
+  --char-center: calc((var(--char-total) - 1) / 2);
+  --char-offset: calc(var(--char-index) - var(--char-center));
+  --distance-sine: calc(var(--char-offset) / var(--char-center));
+
+  animation: fly-in 0.5s cubic-bezier(0.74, 0.73, 0.27, 1.67) both;
+  animation-delay: calc(0.04s * var(--char-index) + 300ms);
+}
+
+@keyframes float {
+  from {
+    opacity: 0;
+    transform: scale(0.65) rotate(var(--angle-start)) translate3d(0, 20px, 0);
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+}
+
+@keyframes fly-in {
+  from {
+    opacity: 0;
+    transform: scale(0) translateY(150%)
+      translateX(calc(var(--distance-sine) * -400%))
+      rotate(calc(var(--distance-sine) * -0.75turn));
+  }
+}
