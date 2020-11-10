@@ -7,6 +7,7 @@ import {
   createSocketStudioClient,
   SocketStudioProvider,
 } from '@socket-studio/preact';
+// } from './socket-studio/index.js';
 import { LowerThird } from './components/lower-third.js';
 import { StreamBlitzOverlays } from './components/stream-blitz-overlays.js';
 

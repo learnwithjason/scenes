@@ -1,6 +1,7 @@
 /** @jsx h */
 import { h } from 'preact';
 import { useTwitchChat } from '@socket-studio/preact';
+// import { useTwitchChat } from '../socket-studio/index.js';
 
 function getUsernameColor(roles) {
   if (roles.includes('BROADCASTER')) {
