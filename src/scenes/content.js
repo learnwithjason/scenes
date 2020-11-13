@@ -1,18 +1,15 @@
 /** @jsx h */
 import { h, Fragment } from 'preact';
 import { Switch, Route } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
 import { Interview } from './interview.js';
 import { Monologue } from './monologue.js';
 import { PairProgramming } from './pair-programming.js';
 import { Solo } from './solo.js';
+import { ConnectingTheDots } from './connecting-the-dots.js';
 
 export function Content() {
   return (
     <Fragment>
-      <Helmet>
-        <link rel="stylesheet" href="/styles/content.css" />
-      </Helmet>
       <Switch>
         <Route path="/interview">
           <Interview />
@@ -25,6 +22,9 @@ export function Content() {
         </Route>
         <Route path="/solo">
           <Solo />
+        </Route>
+        <Route path="/connecting-the-dots">
+          <ConnectingTheDots />
         </Route>
       </Switch>
     </Fragment>

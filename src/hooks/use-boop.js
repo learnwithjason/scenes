@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { useTwitchChat } from './use-twitch-chat.js';
+import { useTwitchChat } from '@socket-studio/preact';
 
 let engine;
 let runner;

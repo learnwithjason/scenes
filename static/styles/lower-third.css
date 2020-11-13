@@ -8,6 +8,32 @@
   z-index: 100;
 }
 
+.lower-third.ctd {
+  align-items: center;
+  grid-template-columns: 280px 1fr 600px;
+}
+
+.fcc-logo {
+  margin-left: -70px;
+  z-index: 10;
+}
+
+.ctd-details {
+  color: var(--text);
+  margin-right: 8vw;
+  text-align: center;
+}
+
+.ctd-details h1 {
+  font-size: 3.5vw;
+  margin: 0;
+}
+
+.ctd-details p {
+  font-size: 1.625vw;
+  margin: 0 0 1rem;
+}
+
 .logo {
   height: 140px;
   position: relative;

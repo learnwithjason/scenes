@@ -61,12 +61,20 @@
   grid-template-rows: 56px 462px 1fr;
 }
 
+.content.connecting-the-dots {
+  background-image: url('https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1605230781/lwj/connecting-the-dots-bg.webp');
+  grid-template-columns: 1fr 480px 80px 480px 1fr;
+  grid-template-rows: 56px 462px 1fr;
+}
+
 .content.monologue {
   background-image: url('https://res.cloudinary.com/jlengstorf/image/upload/f_auto,q_auto/v1596392808/lwj/monologue-overlay.webp');
   grid-template-columns: 1fr 600px 1fr;
   grid-template-rows: 56px 462px 1fr;
 }
 
+.connecting-the-dots .host,
+.connecting-the-dots .guest,
 .interview .host,
 .interview .guest,
 .monologue .host {
@@ -76,15 +84,18 @@
   width: 100%;
 }
 
+.connecting-the-dots .guest,
 .interview .guest {
   grid-column: 4 / 5;
 }
 
+.connecting-the-dots h2,
 .interview h2,
 .monologue h2 {
   font-size: 36px;
 }
 
+.connecting-the-dots h2::after,
 .interview h2::after,
 .monologue h2::after {
   background: transparent;

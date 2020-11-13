@@ -2,7 +2,7 @@
 import { h, Fragment } from 'preact';
 import { useEffect, useRef } from 'preact/hooks';
 import { Helmet } from 'react-helmet';
-import { useTwitchChat } from '../hooks/use-twitch-chat.js';
+import { useTwitchChat } from '@socket-studio/preact';
 
 const VALID_COMMANDS = ['grow', 'shave', 'flap'];
 const INCREMENT = 10;

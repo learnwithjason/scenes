@@ -30,3 +30,9 @@
   to = "/"
   status = 200
   force = true
+
+[[redirects]]
+  from = "/connecting-the-dots"
+  to = "/"
+  status = 200
+  force = true
