@@ -3,16 +3,17 @@ import { h } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 
 export function ConnectingTheDots() {
-  const [guest, setGuest] = useState();
+  const guest = 'Henri Helvetica';
+  // const [guest, setGuest] = useState();
 
-  useEffect(() => {
-    if (typeof window === 'undefined') {
-      return;
-    }
+  // useEffect(() => {
+  //   if (typeof window === 'undefined') {
+  //     return;
+  //   }
 
-    const qs = new URLSearchParams(window.location.search);
-    setGuest(qs.get('guest'));
-  }, []);
+  //   const qs = new URLSearchParams(window.location.search);
+  //   setGuest(qs.get('guest'));
+  // }, []);
 
   return guest ? (
     <div className="content connecting-the-dots">

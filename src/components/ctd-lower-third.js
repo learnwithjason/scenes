@@ -6,16 +6,17 @@ import { Logo } from './logo.js';
 import { FCCLogo } from './fcc-logo.js';
 
 export function CTDLowerThird() {
-  const [guest, setGuest] = useState();
+  const guest = 'Henri Helvetica';
+  // const [guest, setGuest] = useState();
 
-  useEffect(() => {
-    if (typeof window === 'undefined') {
-      return;
-    }
+  // useEffect(() => {
+  //   if (typeof window === 'undefined') {
+  //     return;
+  //   }
 
-    const qs = new URLSearchParams(window.location.search);
-    setGuest(qs.get('guest'));
-  }, []);
+  //   const qs = new URLSearchParams(window.location.search);
+  //   setGuest(qs.get('guest'));
+  // }, []);
 
   return (
     <Fragment>
