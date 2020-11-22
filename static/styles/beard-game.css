@@ -11,7 +11,7 @@
 
   position: absolute;
   left: 0;
-  bottom: 150px;
+  bottom: 0;
   transform: scale(0.35);
   transform-origin: bottom left;
   width: 500px;
