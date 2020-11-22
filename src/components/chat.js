@@ -21,8 +21,6 @@ function getUsernameColor(roles) {
 export function Chat() {
   const { chat } = useTwitchChat('jlengstorf');
 
-  console.log({ chat });
-
   return (
     <div className="chat">
       <ul className="chat-container">
