@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 
 export function useCurrentLWJEpisode() {
   const [loading, setLoading] = useState(true);
@@ -7,7 +7,8 @@ export function useCurrentLWJEpisode() {
 
   useEffect(() => {
     async function loadEpisode() {
-      console.log('loading episode details');
+      if (!loading || episode) return;
+
       // if an episode is in progress, we still want to show it.
       const nowMinus3Hours = new Date().getTime() - 180 * 60 * 1000;
       const episode = await fetch(
@@ -55,7 +56,7 @@ export function useCurrentLWJEpisode() {
       });
     }
 
-    useMemo(() => loadEpisode(), []);
+    loadEpisode();
   }, []);
 
   return { episode, loading, error };
