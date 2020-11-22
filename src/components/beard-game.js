@@ -34,7 +34,7 @@ const Notifications = ({ command }) => {
     ref.current.appendChild(word);
 
     async function splitByCharacters() {
-      const splitting = await import('splitting');
+      const { default: splitting } = await import('/web_modules/splitting.js');
 
       splitting({ by: 'chars' });
     }
@@ -53,7 +53,7 @@ const Notifications = ({ command }) => {
 
 export function BeardGame() {
   const ref = useRef();
-  const { command } = useTwitchChat('jlengstorf');
+  const { currentCommand: command } = useTwitchChat('jlengstorf');
 
   useEffect(() => {
     const beard = ref.current.querySelector('.beard');
