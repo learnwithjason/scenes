@@ -108,7 +108,7 @@ export function useBoop() {
     }
 
     const [message] = chat.slice(-1);
-    if (!message?.emotes) return;
+    if (!message || !message.emotes) return;
 
     message.emotes.forEach((emote) => {
       console.log({ emote });

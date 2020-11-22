@@ -15,7 +15,7 @@ const Notifications = ({ command }) => {
   const ref = useRef();
 
   useEffect(() => {
-    const cmd = command?.command;
+    const cmd = command && command.command;
     if (!cmd || !VALID_COMMANDS.includes(cmd)) {
       return;
     }
