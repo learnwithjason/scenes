@@ -1,5 +1,4 @@
 /** @jsx h */
-import 'preact/debug';
 import { h, Fragment } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import { Helmet } from 'react-helmet';

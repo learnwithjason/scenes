@@ -1,5 +1,4 @@
 /** @jsx h */
-import 'preact/debug';
 import { h, Fragment } from 'preact';
 import { useState } from 'preact/hooks';
 import { BrowserRouter as Router } from 'react-router-dom';
