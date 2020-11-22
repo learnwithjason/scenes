@@ -1,20 +1,7 @@
 /** @jsx h */
 import { h } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
 
-export function ConnectingTheDots() {
-  const guest = 'Henri Helvetica';
-  // const [guest, setGuest] = useState();
-
-  // useEffect(() => {
-  //   if (typeof window === 'undefined') {
-  //     return;
-  //   }
-
-  //   const qs = new URLSearchParams(window.location.search);
-  //   setGuest(qs.get('guest'));
-  // }, []);
-
+export function ConnectingTheDots({ guest = 'Set a Guest Name' }) {
   return guest ? (
     <div className="content connecting-the-dots">
       <div className="host">

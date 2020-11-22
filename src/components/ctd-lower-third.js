@@ -1,23 +1,10 @@
 /** @jsx h */
 import { h, Fragment } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
 import { Helmet } from 'react-helmet';
 import { Logo } from './logo.js';
 import { FCCLogo } from './fcc-logo.js';
 
-export function CTDLowerThird() {
-  const guest = 'Henri Helvetica';
-  // const [guest, setGuest] = useState();
-
-  // useEffect(() => {
-  //   if (typeof window === 'undefined') {
-  //     return;
-  //   }
-
-  //   const qs = new URLSearchParams(window.location.search);
-  //   setGuest(qs.get('guest'));
-  // }, []);
-
+export function CTDLowerThird({ guest = 'Guest Name' }) {
   return (
     <Fragment>
       <Helmet>

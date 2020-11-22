@@ -5,7 +5,6 @@ import { Interview } from './interview.js';
 import { Monologue } from './monologue.js';
 import { PairProgramming } from './pair-programming.js';
 import { Solo } from './solo.js';
-import { ConnectingTheDots } from './connecting-the-dots.js';
 
 export function Content() {
   return (
@@ -22,9 +21,6 @@ export function Content() {
         </Route>
         <Route path="/solo">
           <Solo />
-        </Route>
-        <Route path="/connecting-the-dots">
-          <ConnectingTheDots />
         </Route>
       </Switch>
     </Fragment>
