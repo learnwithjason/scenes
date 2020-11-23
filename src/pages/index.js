@@ -21,11 +21,6 @@ export default () => {
         <title>Learn With Jason Scenes Powered By Stream Blitz</title>
         <link rel="stylesheet" href="/styles/global.css" />
         <link rel="stylesheet" href="/styles/content.css" />
-        <script
-          src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.14.2/matter.js"
-          integrity="sha512-gYH92QFYJSMUZ5sOAtkAyyShHFf8cipWjMHVWD9f4244kx3xeSn7cUcep4UxaHCKwTKU/Nzq5Lk0EkbuQGkeSg=="
-          crossorigin="anonymous"
-        ></script>
       </Helmet>
       <SocketStudioProvider client={client}>
         <main className="overlay">

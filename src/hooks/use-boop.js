@@ -1,61 +1,53 @@
+import * as Matter from 'matter-js';
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { useTwitchChat } from '@socket-studio/preact';
 
-let engine;
-let runner;
+const { Engine, Render, Runner, World, Bodies } = Matter.default;
+
+const engine = Engine.create();
+const runner = Runner.create();
+
+function createBoop(url) {
+  const boop = Bodies.circle(
+    Math.round(Math.random() * window.innerWidth),
+    -30,
+    15,
+    {
+      angle: Math.PI * (Math.random() * 2 - 1),
+      friction: 0.001,
+      frictionAir: 0.01,
+      restitution: 0.75,
+      render: {
+        sprite: {
+          texture: url,
+          xScale: 0.5,
+          yScale: 0.5,
+        },
+      },
+    },
+  );
+
+  setTimeout(() => {
+    World.remove(engine.world, boop);
+  }, 30000);
+
+  World.add(engine.world, [boop]);
+}
 
 export function useBoop() {
   const ref = useRef();
-  const [createBoop, setCreateBoop] = useState(false);
-  const { chat } = useTwitchChat('jlengstorf');
-
-  console.log({ chat });
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (!window || !window.Matter || createBoop) {
+    const canvas = ref.current;
+
+    if (!canvas) {
       return;
     }
 
-    if (!engine) {
-      engine = window.Matter.Engine.create();
-    }
-
-    if (!runner) {
-      runner = window.Matter.Runner.create();
-    }
-
-    setCreateBoop((url) => {
-      const boop = window.Matter.Bodies.circle(
-        Math.round(Math.random() * 1280),
-        -30,
-        20,
-        {
-          angle: Math.PI * (Math.random() * 2 - 1),
-          friction: 0.001,
-          frictionAir: 0.01,
-          restitution: 0.8,
-          render: {
-            sprite: {
-              texture: url,
-              xScale: 0.5,
-              yScale: 0.5,
-            },
-          },
-        },
-      );
-
-      setTimeout(() => {
-        window.Matter.World.remove(engine.world, boop);
-      }, 30000);
-
-      window.Matter.World.add(engine.world, [boop]);
-    });
-
-    const canvas = ref.current;
     const height = ref.current.clientHeight;
     const width = ref.current.clientWidth;
 
-    const render = window.Matter.Render.create({
+    const render = Render.create({
       element: 'div',
       canvas,
       engine: engine,
@@ -74,21 +66,21 @@ export function useBoop() {
         strokeStyle: 'transparent',
       },
     };
-    const ground = window.Matter.Bodies.rectangle(
+    const ground = Bodies.rectangle(
       width / 2,
       height,
       width + 20,
       4,
       boundaries,
     );
-    const leftWall = window.Matter.Bodies.rectangle(
+    const leftWall = Bodies.rectangle(
       0,
       height / 2,
       4,
       height + 60,
       boundaries,
     );
-    const rightWall = window.Matter.Bodies.rectangle(
+    const rightWall = Bodies.rectangle(
       width,
       height / 2,
       4,
@@ -96,31 +88,19 @@ export function useBoop() {
       boundaries,
     );
 
-    window.Matter.World.add(engine.world, [ground, leftWall, rightWall]);
+    World.add(engine.world, [ground, leftWall, rightWall]);
 
-    window.Matter.Render.run(render);
-    window.Matter.Runner.run(runner, engine);
+    Render.run(render);
+    Runner.run(runner, engine);
   }, [ref]);
 
-  useEffect(() => {
-    if (!window) {
-      return;
-    }
+  const boopImage =
+    'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto,w_90/v1585764654/lwj/store/boop.png';
 
-    const [message] = chat.slice(-1);
-    if (!message || !message.emotes) return;
+  const addBoop = () => {
+    createBoop(boopImage);
+    setCount(count + 1);
+  };
 
-    message.emotes.forEach((emote) => {
-      console.log({ emote });
-      if (emote.name === 'jlengsBOOP') {
-        emote.locations.forEach(() => {
-          if (typeof createBoop === 'function') {
-            createBoop(emote.images.large);
-          }
-        });
-      }
-    });
-  }, [chat.length]);
-
-  return ref;
+  return { boopRef: ref, addBoop, count };
 }

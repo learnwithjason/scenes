@@ -1,19 +1,37 @@
 /** @jsx h */
 import { h } from 'preact';
+import { useEffect } from 'preact/hooks';
+import { useTwitchChat } from '@socket-studio/preact';
 import { useBoop } from '../hooks/use-boop.js';
 
 export function BoopDrop() {
-  const boopBox = useBoop();
+  const { chat } = useTwitchChat('jlengstorf');
+  const { boopRef, addBoop } = useBoop();
+
+  useEffect(() => {
+    if (!window) {
+      return;
+    }
+
+    const [message] = chat.slice(-1);
+    if (!message || !message.emotes) return;
+
+    message.emotes.forEach((emote) => {
+      if (emote.name === 'jlengsBOOP') {
+        emote.locations.forEach(() => addBoop());
+      }
+    });
+  }, [chat.length]);
 
   return (
     <canvas
-      ref={boopBox}
+      ref={boopRef}
       style={{
-        height: '100%',
+        height: 570,
         left: 0,
         position: 'absolute',
         top: 0,
-        width: '100%',
+        width: 1280,
       }}
     />
   );
