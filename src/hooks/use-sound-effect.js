@@ -3,8 +3,8 @@ import { useMachine } from '@xstate/react';
 import { Machine, assign } from 'xstate';
 import { useTwitchChat } from '@socket-studio/preact';
 
-const formatCommand = (msg) => {
-  const { duration, message, audio, image } = msg?.handler || {};
+const formatCommand = (msg = {}) => {
+  const { duration, message, audio, image } = msg.handler || {};
 
   if (!message && !audio && !image) {
     return {};
@@ -132,14 +132,14 @@ const commandMachine = Machine(
         queue: (context) => context.queue.slice(1),
       }),
       commandPlayAudio: (context) => {
-        console.log({ context });
-        if (!context.current.command?.audio) {
+        const cmd = context.current.command || {};
+
+        if (!cmd.audio) {
           return;
         }
 
         const sfx = COMMAND_ASSET_CACHE[context.current.command.audio];
 
-        console.log({ sfx });
         sfx.play();
       },
     },
@@ -207,7 +207,7 @@ const commandMachine = Machine(
     delays: {
       TRANSITION_DURATION: 600,
       COMMAND_DURATION: (context) => {
-        return context.current.command.duration ?? 4000;
+        return context.current.command.duration || 4000;
       },
     },
   },
@@ -220,14 +220,10 @@ export function useSoundEffect(config) {
   const [state, send] = useMachine(commandMachine, config);
 
   useEffect(() => {
-    if (
-      !command ||
-      !command.handler ||
-      (!command.handler?.message &&
-        !command.handler?.audio &&
-        !command.handler?.image)
-    )
+    const handler = (command && command.handler) || {};
+    if (!handler.message && !handler.audio && !handler.image) {
       return;
+    }
 
     send({ type: 'ADD_TO_QUEUE', command });
   }, [command]);

@@ -5,11 +5,14 @@ import { useTwitchChat } from '@socket-studio/preact';
 
 const getEmoteCount = (countableEmotes, message) => {
   const isCountable = (emote) => countableEmotes.includes(emote.name);
-  const matchingEmotes = message.emotes?.filter(isCountable);
-  const count = matchingEmotes.reduce(
-    (total, emote) => total + emote?.locations?.length || 0,
-    0,
-  );
+  const matchingEmotes = message.emotes
+    ? message.emotes.filter(isCountable)
+    : [];
+
+  const count = matchingEmotes.reduce((total, emote) => {
+    const emoteCount = emote && emote.locations && emote.locations.length;
+    return total + emoteCount || 0;
+  }, 0);
 
   return count;
 };
@@ -164,7 +167,7 @@ export const useEmoteCount = () => {
   const [state, send] = useMachine(emoteCountMachine);
 
   useEffect(() => {
-    if (!message?.emotes) return;
+    if (!message || !message.emotes) return;
 
     send({ type: 'CHAT_MESSAGE', element: ref.current, message });
   }, [message, ref]);

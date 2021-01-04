@@ -56,7 +56,11 @@ export function Effects() {
   const state = useSoundEffect();
 
   // don’t show anything if we’re idle or don’t have a valid command
-  if (state.value === 'idle' || !state.context.current?.command?.name) {
+  if (
+    state.value === 'idle' ||
+    !state.context.current ||
+    !state.context.current.command
+  ) {
     return;
   }
 
