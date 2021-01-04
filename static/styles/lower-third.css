@@ -191,7 +191,20 @@
 }
 
 .chat-message {
+  display: grid;
   font-size: 12px;
+  gap: 0.25rem;
+  grid-template-columns: 85px 1fr;
+}
+
+.chat-message strong {
+  overflow: hidden;
+  text-align: right;
+  text-overflow: ellipsis;
+}
+
+.chat-message span {
+  word-break: break-word;
 }
 
 .chat-message img {

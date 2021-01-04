@@ -15,11 +15,17 @@
   "dependencies": {
     "@sector/breadbox": "^0.0.4",
     "@socket-studio/preact": "^1.0.0-canary.14",
-    "matter-js": "^0.14.2",
+    "@xstate/fsm": "^1.5.2",
+    "@xstate/react": "^1.2.2",
+    "matter-js": "^0.15.0",
+    "poly-decomp": "^0.3.0",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
+    "rehype": "^11.0.0",
+    "rehype-sanitize": "^4.0.0",
     "splitting": "^1.0.6",
-    "toast": "^0.3.30"
+    "toast": "^0.3.39",
+    "xstate": "^4.15.3"
   },
   "snowpack": {
     "exclude": [
@@ -35,6 +41,7 @@
     "knownEntrypoints": [
       "preact",
       "preact/hooks",
+      "splitting",
       "splitting/dist/splitting.css"
     ]
   },

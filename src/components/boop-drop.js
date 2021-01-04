@@ -5,7 +5,7 @@ import { useTwitchChat } from '@socket-studio/preact';
 import { useBoop } from '../hooks/use-boop.js';
 
 export function BoopDrop() {
-  const { chat } = useTwitchChat('jlengstorf');
+  const { chat } = useTwitchChat(process.env.TOAST_TWITCH_CHANNEL);
   const { boopRef, addBoop } = useBoop();
 
   useEffect(() => {

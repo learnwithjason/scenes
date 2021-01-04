@@ -261,7 +261,7 @@
   --char-offset: calc(var(--char-index) - var(--char-center));
   --distance-sine: calc(var(--char-offset) / var(--char-center));
 
-  animation: fly-in 0.5s cubic-bezier(0.74, 0.73, 0.27, 1.67) both;
+  animation: beard-fly-in 0.5s cubic-bezier(0.74, 0.73, 0.27, 1.67) both;
   animation-delay: calc(0.04s * var(--char-index) + 300ms);
 }
 
@@ -280,7 +280,7 @@
   }
 }
 
-@keyframes fly-in {
+@keyframes beard-fly-in {
   from {
     opacity: 0;
     transform: scale(0) translateY(150%)

@@ -4,4 +4,286 @@
   position: absolute;
   right: 0;
   top: 0;
+  z-index: 1000;
+}
+
+.command-display {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-bottom-width: 0;
+  border-right-width: 0;
+  border-radius: 10px 0 0 0;
+  max-width: 415px;
+  padding: 15px 15px 5px;
+  opacity: 0;
+  transition: 600ms opacity linear;
+  width: 100%;
+}
+
+.command-display.visible {
+  opacity: 1;
+}
+
+.command-image {
+  border: 1px solid black;
+  border-radius: 6px;
+  display: block;
+  width: 100%;
+}
+
+.command-text {
+  color: #fff;
+  font-family: mallory, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+  text-transform: lowercase;
+}
+
+.username,
+.effect {
+  margin: 0 0.375em;
+}
+
+.effect {
+  color: var(--blue);
+}
+
+.command-text .char {
+  --char-center: calc((var(--char-total) - 1) / 2);
+  --char-offset: calc(var(--char-index) - var(--char-center));
+  --distance-sine: calc(var(--char-offset) / var(--char-center));
+
+  animation: fly-in 0.5s cubic-bezier(0.74, 0.73, 0, 1.5) both;
+  animation-delay: calc(0.02s * var(--char-index));
+  background: var(--black);
+  display: block;
+  line-height: 1;
+  margin: 0 -0.15em;
+  padding: 0.2em;
+  text-shadow: 0.01em 0.01em var(--black), -0.01em 0.01em var(--black),
+    0.01em -0.01em var(--black), -0.01em -0.01em var(--black);
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 0.2em transparent;
+}
+
+@keyframes fly-in {
+  from {
+    opacity: 0;
+    transform: scale(0) translate3d(calc(var(--distance-sine) * -300%), 250%, 0)
+      rotate(calc(var(--distance-sine) * -0.6turn));
+  }
+}
+
+/*
+ * corgi stampede styles
+ */
+#emote-count {
+  opacity: 1;
+  transition: 250ms opacity linear;
+}
+
+#emote-count.hidden {
+  opacity: 0;
+}
+
+.emote-banner {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  background: hsla(270, 50%, 60%, 95%);
+  border: 1px solid hsla(270, 50%, 90%, 95%);
+  border-radius: 45px;
+  opacity: 0;
+  padding: 5px;
+}
+
+.emote {
+  background: hsl(270, 50%, 98%);
+  border-radius: 50%;
+  display: block;
+  margin: 0;
+  height: 50px;
+  width: 50px;
+}
+
+.emote img {
+  margin-left: -5%;
+  margin-top: -5%;
+  width: 110%;
+}
+
+.emote-message {
+  animation-delay: 180ms;
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1;
+  margin: 0;
+  transform-origin: center right;
+  transform: scale(0.01);
+  width: 1px;
+}
+
+.emote-message text {
+  fill: hsl(300, 50%, 95%);
+  paint-order: stroke;
+  stroke: hsl(270, 50%, 20%);
+  stroke-width: 8px;
+  stroke-linejoin: round;
+  text-anchor: middle;
+}
+
+.visible .emote-banner {
+  animation: fadein 150ms ease-out;
+  animation-fill-mode: forwards;
+}
+
+#emote-count.hidden {
+  animation: fadein 250ms reverse ease-out;
+  animation-fill-mode: backwards;
+}
+
+.visible .emote img {
+  animation: 500ms bounce ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.visible .emote-message {
+  animation: 200ms appear ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  from {
+    padding-left: 0;
+    padding-right: 0;
+    transform: scale(0.01);
+    width: 1px;
+  }
+
+  to {
+    padding-left: 10px;
+    padding-right: 25px;
+    transform: scale(1);
+    width: 200px;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: rotate(-500deg) scale(0.2);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.stampede {
+  align-content: center;
+  display: grid;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.stampede .char {
+  animation: fly-swipe 4s ease-in-out;
+  animation-delay: calc(var(--char-index) * 100ms);
+  background: var(--black);
+  color: var(--text);
+  font-family: var(--font-family);
+  font-size: 9vw;
+  font-weight: 800;
+  margin: 0 -0.15em;
+  padding: 0.2em;
+  text-shadow: 0.01em 0.01em var(--black), -0.01em 0.01em var(--black),
+    0.01em -0.01em var(--black), -0.01em -0.01em var(--black);
+  transform: translate3d(100vw, 10vh, 0) rotate(0.25turn);
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 0.2em transparent;
+}
+
+@keyframes fly-swipe {
+  50% {
+    transform: translate3d(0, 0, 0) rotate(0turn);
+  }
+
+  100% {
+    transform: translate3d(-100vw, -10vh, 0) rotate(-0.15turn);
+  }
+}
+
+.corgi-stampede {
+  bottom: 2px;
+  left: 0;
+  height: 190px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  width: 100%;
+}
+
+.corgi {
+  --scale: 1;
+  animation: corgi-run 4s linear;
+  animation-delay: 1s;
+  position: absolute;
+  transform: translate3d(105vw, 0, 0) scale(var(--scale));
+}
+
+.corgi-stampede img {
+  animation: corgi-jump 400ms ease-in-out;
+  animation-delay: 500ms;
+  position: relative;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes corgi-run {
+  from {
+    transform: translate3d(105vw, 0, 0) scale(var(--scale));
+  }
+
+  to {
+    transform: translate3d(-5vw, 0, 0) scale(var(--scale));
+  }
+}
+
+@keyframes corgi-jump {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -25px, 0);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }

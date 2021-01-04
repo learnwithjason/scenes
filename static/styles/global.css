@@ -29,6 +29,7 @@
 body {
   background: var(--black);
   margin: 0;
+  overflow: hidden;
 }
 
 .overlay {

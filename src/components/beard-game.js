@@ -53,7 +53,9 @@ const Notifications = ({ command }) => {
 
 export function BeardGame() {
   const ref = useRef();
-  const { currentCommand: command } = useTwitchChat('jlengstorf');
+  const { currentCommand: command } = useTwitchChat(
+    process.env.TOAST_TWITCH_CHANNEL,
+  );
 
   useEffect(() => {
     const beard = ref.current.querySelector('.beard');
