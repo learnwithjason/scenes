@@ -1,6 +1,6 @@
 [build]
   publish = "public"
-  command = "npm run breadbox && npm run build"
+  command = "npm run build"
 
 [dev]
   autoLaunch = false
@@ -31,3 +31,6 @@
   to = "/"
   status = 200
   force = true
+
+[[plugins]]
+  package = "netlify-plugin-toast-cache"

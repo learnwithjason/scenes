@@ -6,10 +6,9 @@
   "author": "Jason Lengstorf <jason@lengstorf.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "rm -rf .cache && yarn build && http-server public",
+    "postinstall": "breadbox --dest public/web_modules",
     "build": "toast incremental .",
-    "prepare": "breadbox --dest public/web_modules",
-    "breadbox": "breadbox --dest public/web_modules",
+    "dev": "npm run build && http-server public",
     "serve": "http-server public"
   },
   "dependencies": {
@@ -18,6 +17,7 @@
     "@xstate/fsm": "^1.5.2",
     "@xstate/react": "^1.2.2",
     "matter-js": "^0.15.0",
+    "netlify-plugin-toast-cache": "0.0.4",
     "poly-decomp": "^0.3.0",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
