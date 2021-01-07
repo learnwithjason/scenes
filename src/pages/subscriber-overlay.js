@@ -12,6 +12,8 @@ export default function SubscriberOverlay() {
         title="tiny Jason wanders out on screen and is delighted by lots of floating hearts"
         autoplay
         muted
+        loop
+        playsinline
       ></video>
     </div>
   );
