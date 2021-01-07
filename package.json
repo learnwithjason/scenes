@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@sector/breadbox": "^0.0.4",
-    "@socket-studio/preact": "^1.0.0-canary.14",
+    "@socket-studio/preact": "^1.0.0-canary.16",
     "@xstate/fsm": "^1.5.2",
     "@xstate/react": "^1.2.2",
     "matter-js": "^0.15.0",
