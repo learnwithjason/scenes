@@ -13,7 +13,7 @@ export function Logo() {
   return (
     <div className="logo">
       <img
-        src="https://res.cloudinary.com/jlengstorf/image/upload/f_auto,q_auto/v1589157815/lwj/logo-dark.svg"
+        src="https://res.cloudinary.com/jlengstorf/image/upload/f_auto,q_auto/lwj/learn-with-jason.png"
         alt="Learn With Jason"
       />
       <canvas ref={ref}></canvas>
