@@ -3,6 +3,7 @@ public
 node_modules/
 .tmp
 .env
+.DS_Store
 
 # Local Netlify folder
 .netlify
