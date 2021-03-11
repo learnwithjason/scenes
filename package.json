@@ -14,7 +14,6 @@
   "dependencies": {
     "@sector/breadbox": "^0.0.4",
     "@socket-studio/preact": "^1.0.0-canary.17",
-    "@xstate/fsm": "^1.5.2",
     "@xstate/react": "^1.2.2",
     "matter-js": "^0.16.0",
     "netlify-plugin-toast-cache": "0.0.4",
