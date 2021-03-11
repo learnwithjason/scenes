@@ -6,6 +6,7 @@ import { BeardGame } from './beard-game.js';
 import { BoopDrop } from './boop-drop.js';
 import { Effects } from './effects.js';
 import { EmoteCounter } from './emote-counter.js';
+import { Submarine } from './submarine.js';
 
 const SCENES_WITH_SIDE_VIDEO = ['/monologue', '/interview'];
 
@@ -19,6 +20,7 @@ export function StreamBlitzOverlays() {
         <link rel="stylesheet" href="/styles/stream-blitz-overlays.css" />
       </Helmet>
       <div className="stream-blitz-overlays">
+        <Submarine />
         <BeardGame rightVideo={rightVideo} />
         <BoopDrop />
         <Effects />
