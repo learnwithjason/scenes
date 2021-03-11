@@ -1,15 +1,27 @@
 /** @jsx h */
 import { h } from 'preact';
-import { useEffect, useRef } from 'preact/hooks';
+import { useEffect, useRef, useState } from 'preact/hooks';
 import { useTwitchChat } from '@socket-studio/preact';
 
 export function Submarine() {
+  const [image, setImage] = useState('submarine');
   const { currentCommand: command } = useTwitchChat(
     process.env.TOAST_TWITCH_CHANNEL,
   );
   const ref = useRef();
 
   useEffect(() => {
+    if (command && command.command === 'pet') {
+      console.log({ command });
+      const pets = ['submarine', 'dumpster-fire'];
+      const newPet = pets.includes(command.args[0])
+        ? command.args[0]
+        : 'submarine';
+
+      setImage(newPet);
+      return;
+    }
+
     if (
       !command ||
       !['up', 'down', 'left', 'right'].includes(command.command)
@@ -64,7 +76,7 @@ export function Submarine() {
 
   return (
     <div ref={ref} className="submarine-wrapper">
-      <img className="submarine" src="/submarine.png" alt="submarine" />
+      <img className="submarine" src={`/${image}.png`} alt={image} />
     </div>
   );
 }
