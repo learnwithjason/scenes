@@ -1,7 +1,7 @@
 /** @jsx h */
-import { h } from "preact";
-import { useEffect, useRef, useState } from "preact/hooks";
-import { useTwitchChat } from "@socket-studio/preact";
+import { h } from 'preact';
+import { useEffect, useRef, useState } from 'preact/hooks';
+import { useTwitchChat } from '@socket-studio/preact';
 
 // (x, y) directions for various commands
 const directions = {
@@ -12,19 +12,19 @@ const directions = {
 };
 
 export function Submarine() {
-  const [image, setImage] = useState("submarine");
+  const [image, setImage] = useState('submarine');
   const { currentCommand: command } = useTwitchChat(
-    process.env.TOAST_TWITCH_CHANNEL
+    process.env.TOAST_TWITCH_CHANNEL,
   );
   const ref = useRef();
 
   useEffect(() => {
-    if (command && command.command === "pet") {
+    if (command && command.command === 'pet') {
       console.log({ command });
-      const pets = ["submarine", "dumpster-fire"];
+      const pets = ['submarine', 'dumpster-fire'];
       const newPet = pets.includes(command.args[0])
         ? command.args[0]
-        : "submarine";
+        : 'submarine';
 
       setImage(newPet);
       return;
@@ -36,7 +36,7 @@ export function Submarine() {
 
     const currentCommand = command.command;
     const wrapper = ref.current;
-    const submarine = wrapper.querySelector(".submarine");
+    const submarine = wrapper.querySelector('.submarine');
     const styles = window.getComputedStyle(submarine);
 
     const MOVEMENT_DISTANCE = 30;
@@ -45,8 +45,8 @@ export function Submarine() {
     const maxLeft = wrapperRect.width - 100;
     const maxTop = wrapperRect.height - 30;
 
-    const currentLeft = parseInt(styles.getPropertyValue("left"), 10);
-    const currentTop = parseInt(styles.getPropertyValue("top"), 10);
+    const currentLeft = parseInt(styles.getPropertyValue('left'), 10);
+    const currentTop = parseInt(styles.getPropertyValue('top'), 10);
 
     const nextLeft =
       currentLeft + directions[currentCommand][0] * MOVEMENT_DISTANCE;
