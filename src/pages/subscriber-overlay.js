@@ -54,7 +54,7 @@ export default function SubscriberOverlay() {
     <SocketStudioProvider client={client}>
       <Helmet>
         <link rel="stylesheet" href="/styles/subscriber-overlay.css" />
-        <link rel="stylesheet" href="/styles/stream-blitz-overlay.css" />
+        <link rel="stylesheet" href="/styles/socket-studio-overlay.css" />
       </Helmet>
       <Video />
     </SocketStudioProvider>
