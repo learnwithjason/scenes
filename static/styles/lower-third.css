@@ -176,7 +176,7 @@
 .sponsors img {
   display: block;
   max-height: 28px;
-  width: auto;
+  width: 100%;
 }
 
 .chat {
