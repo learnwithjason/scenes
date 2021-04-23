@@ -43,6 +43,20 @@
   width: 280px;
 }
 
+.logo::before {
+  background-image: url(https://res.cloudinary.com/jlengstorf/image/upload/v1619206308/lwj/lwb-logo-overlay.png);
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-size: contain;
+  bottom: 0;
+  content: '';
+  height: 158px;
+  position: absolute;
+  right: 20px;
+  width: 186px;
+  z-index: 1000;
+}
+
 .logo::after {
   background-image: linear-gradient(
       255deg,
