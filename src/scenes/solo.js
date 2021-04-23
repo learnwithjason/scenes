@@ -8,7 +8,7 @@ export function Solo() {
       <div className="videos solo">
         <div className="host">
           <h2>
-            <span>Jason Lengstorf</span>
+            <span>Ben Hong</span>
           </h2>
         </div>
       </div>

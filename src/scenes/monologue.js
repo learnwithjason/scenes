@@ -6,7 +6,7 @@ export function Monologue() {
     <div className="content monologue">
       <div className="host">
         <h2>
-          <span>Jason Lengstorf</span>
+          <span>Ben Hong</span>
         </h2>
       </div>
     </div>
