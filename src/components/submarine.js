@@ -3,6 +3,14 @@ import { h } from 'preact';
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { useTwitchChat } from '@socket-studio/preact';
 
+// (x, y) directions for various commands
+const directions = {
+  up: [0, -1],
+  down: [0, 1],
+  left: [-1, 0],
+  right: [1, 0],
+};
+
 export function Submarine() {
   const [image, setImage] = useState('submarine');
   const { currentCommand: command } = useTwitchChat(
@@ -22,55 +30,40 @@ export function Submarine() {
       return;
     }
 
-    if (
-      !command ||
-      !['up', 'down', 'left', 'right'].includes(command.command)
-    ) {
+    if (!command || !Object.keys(directions).includes(command.command)) {
       return;
     }
 
+    const currentCommand = command.command;
     const wrapper = ref.current;
     const submarine = wrapper.querySelector('.submarine');
     const styles = window.getComputedStyle(submarine);
 
     const MOVEMENT_DISTANCE = 30;
 
-    switch (command.command) {
-      case 'left':
-        const currentLeft = parseInt(styles.getPropertyValue('left')); // => '0px' -> 0
-        const newLeft =
-          currentLeft > MOVEMENT_DISTANCE ? currentLeft - MOVEMENT_DISTANCE : 0;
-        submarine.style.left = `${newLeft}px`;
-        submarine.style.transform = 'scaleX(1)';
-        return;
+    const wrapperRect = wrapper.getBoundingClientRect();
+    const maxLeft = wrapperRect.width - 100;
+    const maxTop = wrapperRect.height - 30;
 
-      case 'right':
-        const current = parseInt(styles.getPropertyValue('left'));
-        const maxLeft = wrapper.getBoundingClientRect().width - 100;
-        const newLeft2 =
-          current < maxLeft - MOVEMENT_DISTANCE
-            ? current + MOVEMENT_DISTANCE
-            : maxLeft;
+    const currentLeft = parseInt(styles.getPropertyValue('left'), 10);
+    const currentTop = parseInt(styles.getPropertyValue('top'), 10);
 
-        submarine.style.left = `${newLeft2}px`;
-        submarine.style.transform = 'scaleX(-1)';
-        return;
+    const nextLeft =
+      currentLeft + directions[currentCommand][0] * MOVEMENT_DISTANCE;
+    const nextTop =
+      currentTop + directions[currentCommand][1] * MOVEMENT_DISTANCE;
 
-      case 'up':
-      case 'down':
-        const direction = command.command === 'up' ? -1 : 1;
-        const distance = MOVEMENT_DISTANCE * direction;
-
-        const currentTop = parseInt(styles.getPropertyValue('top'));
-        const maxTop = wrapper.getBoundingClientRect().height - 30;
-
-        let newTop = currentTop;
-        if (currentTop + distance < maxTop && currentTop + distance > 0) {
-          newTop = currentTop + distance;
-        }
-
-        submarine.style.top = `${newTop}px`;
-        return;
+    if (nextLeft !== currentLeft && nextLeft > 0 && nextLeft < maxLeft) {
+      submarine.style.left = `${nextLeft}px`;
+      submarine.style.transform = `scaleX(${
+        -1 * directions[currentCommand][0]
+      })`;
+    }
+    if (nextTop !== currentTop && nextTop > 0 && nextTop < maxTop) {
+      submarine.style.top = `${nextTop}px`;
+      submarine.style.transform = `rotate(${
+        -90 * directions[currentCommand][1]
+      }deg)`;
     }
   }, [command]);
 
