@@ -1,6 +1,7 @@
 /** @jsx h */
 import { h } from 'preact';
 import { useCurrentLWJEpisode } from '../hooks/use-current-lwj-episode.js';
+import { Sponsors } from './sponsors.js';
 
 export function Details() {
   const { episode, loading } = useCurrentLWJEpisode();
@@ -24,13 +25,7 @@ export function Details() {
           </p>
         </div>
 
-        <div className="sponsors">
-          <span>live captioning made possible by</span>
-          <img
-            src="https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1596391942/lwj/sponsors.png"
-            alt="sponsors"
-          />
-        </div>
+        <Sponsors />
       </div>
     </div>
   );

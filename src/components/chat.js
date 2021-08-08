@@ -31,8 +31,6 @@ export function Chat() {
             return;
           }
 
-          console.log(message);
-
           const text = rehype()
             .data('settings', { fragment: true })
             .use(sanitize, {

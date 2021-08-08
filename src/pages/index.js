@@ -9,7 +9,7 @@ import {
 } from '@socket-studio/preact';
 import { Content } from '../scenes/content.js';
 import { LowerThird } from '../components/lower-third.js';
-import { StreamBlitzOverlays } from '../components/stream-blitz-overlays.js';
+import { SocketStudioOverlays } from '../components/socket-studio-overlays.js';
 
 export default () => {
   const client = createSocketStudioClient(process.env.TOAST_SOCKET_STUDIO_URL);
@@ -29,7 +29,7 @@ export default () => {
             {isBrowser ? (
               <Router>
                 <Content />
-                <StreamBlitzOverlays />
+                <SocketStudioOverlays />
               </Router>
             ) : null}
             <div className="bottom-bar" />

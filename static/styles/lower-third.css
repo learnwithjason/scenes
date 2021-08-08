@@ -35,7 +35,10 @@
 }
 
 .logo {
+  align-content: center;
+  display: grid;
   height: 140px;
+  justify-content: center;
   position: relative;
   width: 280px;
 }
@@ -68,9 +71,8 @@
 
 .logo img {
   display: block;
-  margin: 0 auto;
   position: relative;
-  width: 108px;
+  width: 150px;
   z-index: 100;
 }
 
@@ -166,9 +168,19 @@
   text-align: right;
 }
 
+.logos {
+  display: flex;
+}
+
 .sponsors img {
   display: block;
+  margin-left: 1.5rem;
+  max-height: 28px;
   width: 100%;
+}
+
+.sponsors img:first-of-type {
+  margin-left: 0;
 }
 
 .chat {
