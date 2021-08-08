@@ -23,6 +23,9 @@ export function useCurrentLWJEpisode() {
               query ($date: DateTime!) {
                 allEpisodes(where: { date_gte: $date }) {
                   title
+                  slug {
+                    current
+                  }
                   date
                   guest {
                     name
@@ -52,6 +55,7 @@ export function useCurrentLWJEpisode() {
       setLoading(false);
       setEpisode({
         title: episode.title,
+        slug: episode.slug.current,
         guest: episode.guest[0].name,
       });
     }
