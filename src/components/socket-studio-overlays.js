@@ -17,7 +17,7 @@ export function SocketStudioOverlays() {
   return (
     <Fragment>
       <Helmet>
-        <link rel="stylesheet" href="/styles/socket-studio-overlays.css" />
+        <link rel="stylesheet" href="/styles/socket-studio-overlays.css?v2" />
       </Helmet>
       <div className="socket-studio-overlays">
         <Submarine />

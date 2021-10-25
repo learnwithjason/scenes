@@ -24,7 +24,7 @@ export default () => {
       </Helmet>
       <SocketStudioProvider client={client}>
         <main className="overlay">
-          <div className="top-bar" />
+          {/* <div className="top-bar" /> */}
           <Fragment>
             {isBrowser ? (
               <Router>
@@ -32,7 +32,7 @@ export default () => {
                 <SocketStudioOverlays />
               </Router>
             ) : null}
-            <div className="bottom-bar" />
+            {/* <div className="bottom-bar" /> */}
             <LowerThird />
           </Fragment>
         </main>

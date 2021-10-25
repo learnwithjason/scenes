@@ -27,7 +27,7 @@ export function BoopDrop() {
     <canvas
       ref={boopRef}
       style={{
-        height: 570,
+        height: 580,
         left: 0,
         position: 'absolute',
         top: 0,
