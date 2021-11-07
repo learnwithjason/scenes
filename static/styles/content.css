@@ -3,6 +3,7 @@
   background-size: cover;
   display: grid;
   grid-template-columns: 1fr 280px;
+  height: calc(100vh - 140px);
 }
 
 .videos {
@@ -56,9 +57,10 @@
 }
 
 .content.interview {
-  background-image: url('https://res.cloudinary.com/jlengstorf/image/upload/f_auto,q_auto/v1596392767/lwj/interview-overlay.webp');
-  grid-template-columns: 1fr 480px 80px 480px 1fr;
-  grid-template-rows: 56px 462px 1fr;
+  background-image: url('https://res.cloudinary.com/jlengstorf/image/upload/v1635121778/f_auto,q_auto/lwj/jamstack-conf-2021-interview.webp');
+  grid-template-columns: 120px 481px 76px 482px 1fr;
+  grid-template-rows: 69px 462px 1fr;
+  background-size: 1280px;
 }
 
 .content.connecting-the-dots {
@@ -98,5 +100,5 @@
 .connecting-the-dots h2::after,
 .interview h2::after,
 .monologue h2::after {
-  background: transparent;
+  height: 18px;
 }

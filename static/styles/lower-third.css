@@ -4,7 +4,8 @@
   background: var(--black);
   display: grid;
   grid-template-columns: 280px 1fr 380px;
-  position: relative;
+  position: absolute;
+  bottom: 0;
   z-index: 100;
 }
 
